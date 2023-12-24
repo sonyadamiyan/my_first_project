@@ -1,6 +1,6 @@
 import telebot
 
-token='5850797962:AAFukAKCIe7Cw2EcG2pczUkK_ZPr2DoRFRo'
+token='6782274357:AAH2lzs9kLCVqe9gGXg2g_H9LzkfWPNMnXQ'
 bot=telebot.TeleBot(token)
 
 def filter_password(message):
