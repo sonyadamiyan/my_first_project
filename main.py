@@ -1,6 +1,7 @@
-from telebot import TeleBot
+import telebot
 
-bot = TeleBot('5850797962:AAFukAKCIe7Cw2EcG2pczUkK_ZPr2DoRFRo')
+token='5850797962:AAFukAKCIe7Cw2EcG2pczUkK_ZPr2DoRFRo'
+bot=telebot.TeleBot(token)
 
 def filter_password(message):
     password = "хомяк"
