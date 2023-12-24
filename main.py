@@ -1,14 +1,28 @@
-import telebot
+from telebot import TeleBot
+import chatBot
+bot = TeleBot('5850797962:AAFukAKCIe7Cw2EcG2pczUkK_ZPr2DoRFRo')
 
-token='6782274357:AAH2lzs9kLCVqe9gGXg2g_H9LzkfWPNMnXQ'
-bot=telebot.TeleBot(token)
+help_massange = \
+    """ Я умею:
+/help - помогу, расскажу что умею
+/about - расскажу о себе"""
 
-def filter_password(message):
-    password = "хомяк"
-    return password in message.text
 
-@bot.message_handler(content_types=['text'], func = filter_password)
-def say_hello(message):
-    bot.send_message(message.chat.id, "Привет!")
+@bot.message_handlers(commands=['start'])
+def bot_start(message):
+    bot.send_message(message.chat.id,
+                     text=f"Привет, {message.from_user.first_name}" + help_massange)
+
+
+@bot.message_handler(commands=['help'])
+def bot_help(message):
+    bot.send_message(message.chat.id, text=help_massange)
+
+
+@bot.message_handlers(commands=['about'])
+def bot_about(message):
+    bot.send_message(message.chat.id, text=chatBot.about_me)
+
 
 bot.polling()
+
